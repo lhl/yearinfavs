@@ -14,14 +14,15 @@ ACCESS_TOKEN = twitter.obtain_access_token()
 twitter = Twython(creds['APP_KEY'], access_token=ACCESS_TOKEN)
 
 # Lets grabe favs from this year
+user = 'lhl'
 keep_going = 1
 min = 0
 while keep_going:
   # https://dev.twitter.com/rest/reference/get/favorites/list
   if min:
-    favs = twitter.get_favorites(screen_name='lhl', count=200, max_id=min)
+    favs = twitter.get_favorites(screen_name=user, count=200, max_id=min)
   else:
-    favs = twitter.get_favorites(screen_name='lhl', count=200)
+    favs = twitter.get_favorites(screen_name=user, count=200)
 
   # Write out file
   max = favs[0]['id']
